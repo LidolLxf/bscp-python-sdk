@@ -20,7 +20,7 @@ jobs:
         run: python -m pip install --upgrade pip setuptools wheel twine
 
       - name: Download source
-        run: curl -sL ${{ github.event.release.tarball_url }}/${{ github.event.release.tag_name }}.tar.gz -o /dist/backup
+        run: curl -sL ${{ github.event.release.tarball_url }} -o /dist/backup
         
       - run: ls -R /dist # 检查工作目录下的文件结构
       - name: Build and publish
