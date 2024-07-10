@@ -19,7 +19,7 @@ jobs:
         run: echo "${{ env.ARCHIVE_NAME }}"
       - name: Echo tag_name
         run: |
-          sdk_name="${{ github.event.release.tag_name }}"
+          sdk_name="v0.0.1"
           if [[ "$sdk_name" == v* ]]; then
             sdk_name="${sdk_name#v}"
           fi
