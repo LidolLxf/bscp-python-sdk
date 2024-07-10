@@ -24,7 +24,9 @@ jobs:
             sdk_name="${sdk_name#v}"
           fi
           echo "SDK Name: $sdk_name"
-          echo "::set-env name=SDK_NAME::$sdk_name"
+          env.SDK_NAME=$sdk_name
+      - name: Echo sdk_name
+        run: echo "${{ env.SDK_NAME }}"
       
       # - name: Install twine
       #   run: python -m pip install --upgrade pip setuptools wheel twine
