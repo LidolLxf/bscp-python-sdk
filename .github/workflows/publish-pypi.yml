@@ -21,12 +21,12 @@ jobs:
 
       - run: mkdir /dist
       - name: Download source
-        run: curl -sL ${{ github.event.release.tarball_url }} -o /dist
+        run: curl -sL ${{ github.event.release.tarball_url }}
         
-      - run: ls -R /dist # 检查工作目录下的文件结构
+      - run: ls -R # 检查工作目录下的文件结构
       - name: Build and publish
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          twine upload --repository-url https://upload.pypi.org/legacy/ /dist/*
+          twine upload --repository-url https://upload.pypi.org/legacy/ ./*
