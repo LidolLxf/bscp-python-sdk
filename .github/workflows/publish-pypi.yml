@@ -17,7 +17,7 @@ jobs:
 
       # - name: Download source
       #   run: curl -sL ${{ github.event.release.tarball_url }}/${{ github.event.release.tag_name }}.tar.gz
-      - run: ls -R && mkdir dist # 检查工作目录下的文件结构
+      - run: ls -R # 检查工作目录下的文件结构
       - name: Build and publish
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
