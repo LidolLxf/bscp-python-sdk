@@ -5,11 +5,11 @@ jobs:
     name: Publish Package to PyPI
     runs-on: ubuntu-latest
     steps:
-      - name: Download release assets
-        uses: actions/download-artifact@v3
-        with:
-          name: v0.0.1 # 使用发布的标签名称来下载对应的压缩包
-          path: /dist  # 下载的文件保存在 dist 目录中，可以根据需要修改路径    
+      # - name: Download release assets
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: v0.0.1 # 使用发布的标签名称来下载对应的压缩包
+      #     path: /dist  # 下载的文件保存在 dist 目录中，可以根据需要修改路径    
 
       # 
       - name: Install twine
