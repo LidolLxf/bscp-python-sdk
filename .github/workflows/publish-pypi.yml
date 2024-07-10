@@ -10,12 +10,11 @@ jobs:
     name: Publish Package to PyPI
     runs-on: ubuntu-latest
     env:
-      # ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
       SDK_NAME: ''
     steps:
       - name: Echo tag_name
         run: |
-          sdk_name="v0.0.1"
+          sdk_name=${{ github.event.release.tag_name }}
           if [[ "$sdk_name" == v* ]]; then
             sdk_name="${sdk_name#v}"
           fi
