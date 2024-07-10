@@ -1,9 +1,8 @@
 name: Publish to PyPI
 
-# on:
-#   release:
-#     types: [published]
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   publish:
@@ -23,16 +22,16 @@ jobs:
       - name: Echo sdk_name
         run: echo "${{ env.SDK_NAME }}"
       
-      # - name: Install twine
-      #   run: python -m pip install --upgrade pip setuptools wheel twine
+      - name: Install twine
+        run: python -m pip install --upgrade pip setuptools wheel twine
 
-      # - name: Download source
-      #   run: wget ${{ github.event.release.tarball_url }}
+      - name: Download source
+        run: wget -O ${{ env.SDK_NAME }}.tar.gz ${{ github.event.release.tarball_url }}
         
-      # - run: ls -R # 检查工作目录下的文件结构
-      # - name: Build and publish
-      #   env:
-      #     TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-      #     TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      #   run: |
-      #     twine upload --repository-url https://upload.pypi.org/legacy/ ./*
+      - run: ls -R # 检查工作目录下的文件结构
+      - name: Build and publish
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          twine upload --repository-url https://upload.pypi.org/legacy/ ./*
