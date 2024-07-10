@@ -19,7 +19,6 @@ jobs:
       - name: Install twine
         run: python -m pip install --upgrade pip setuptools wheel twine
 
-      - run: mkdir /dist
       - name: Download source
         run: curl -sL ${{ github.event.release.tarball_url }}
         
