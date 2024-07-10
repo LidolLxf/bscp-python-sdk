@@ -9,8 +9,8 @@ jobs:
   publish:
     name: Publish Package to PyPI
     runs-on: ubuntu-latest
-      env:
-        ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
+    env:
+      ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
     steps:
       - name: Echo 
         run: echo "$ARCHIVE_NAME"
