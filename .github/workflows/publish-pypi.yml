@@ -24,7 +24,7 @@ jobs:
             sdk_name="${sdk_name#v}"
           fi
           echo "SDK Name: $sdk_name"
-          echo "::set-output name=SDK_NAME::$sdk_name"
+          echo "SDK_NAME=$sdk_name" >> $GITHUB_ENV
       - name: Echo sdk_name
         run: echo "${{ env.SDK_NAME }}"
       
