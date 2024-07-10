@@ -1,31 +1,31 @@
 name: Publish to PyPI
 
-on:
-  release:
-    types: [published]
+# on:
+#   release:
+#     types: [published]
+on:[push]
 
 jobs:
   publish:
     name: Publish Package to PyPI
     runs-on: ubuntu-latest
+      env:
+        ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
     steps:
-      # - name: Download release assets
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: v0.0.1 # 使用发布的标签名称来下载对应的压缩包
-      #     path: /dist  # 下载的文件保存在 dist 目录中，可以根据需要修改路径    
+      - name: Echo 
+        run: echo "$ARCHIVE_NAME"
+        echo "${{ env.ARCHIVE_NAME }}"
+        echo "${{ github.event.release.tag_name#v }}"
+      # - name: Install twine
+      #   run: python -m pip install --upgrade pip setuptools wheel twine
 
-      # 
-      - name: Install twine
-        run: python -m pip install --upgrade pip setuptools wheel twine
-
-      - name: Download source
-        run: wget ${{ github.event.release.tarball_url }}
+      # - name: Download source
+      #   run: wget ${{ github.event.release.tarball_url }}
         
-      - run: ls -R # 检查工作目录下的文件结构
-      - name: Build and publish
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          twine upload --repository-url https://upload.pypi.org/legacy/ ./*
+      # - run: ls -R # 检查工作目录下的文件结构
+      # - name: Build and publish
+      #   env:
+      #     TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+      #     TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      #   run: |
+      #     twine upload --repository-url https://upload.pypi.org/legacy/ ./*
