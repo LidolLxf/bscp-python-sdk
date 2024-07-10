@@ -12,8 +12,13 @@ jobs:
     env:
       ARCHIVE_NAME: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
     steps:
-      - name: Echo 
-        run: echo "$ARCHIVE_NAME ${{ env.ARCHIVE_NAME }} ${{ github.event.release.tag_name#v }}"
+      - name: Echo ARCHIVE_NAME 
+        run: echo "$ARCHIVE_NAME"
+      - name: Echo env
+        run: echo "${{ env.ARCHIVE_NAME }}"
+      - name: Echo tag_name
+        run: echo "${{ github.event.release.tag_name#v }}"
+      
       # - name: Install twine
       #   run: python -m pip install --upgrade pip setuptools wheel twine
 
